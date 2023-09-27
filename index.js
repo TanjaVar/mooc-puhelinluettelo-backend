@@ -28,3 +28,8 @@ let persons = [
 		"number": "945-4252345"
 	}
 ]
+
+app.get('/', (request, response) => {
+	seponse.json(persons)
+
+})
