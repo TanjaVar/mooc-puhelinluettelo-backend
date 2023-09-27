@@ -33,6 +33,7 @@ app.get('/api/persons/', (request, response) => {
 	response.json(persons)
 })
 
+	const personsCount = persons.length
 const PORT = 3001
 app.listen(PORT, () => {
 	console.log(`server running in port ${PORT}`)
