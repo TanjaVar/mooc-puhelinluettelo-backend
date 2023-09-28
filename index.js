@@ -35,7 +35,7 @@ app.get('/api/persons/', (request, response) => {
 
 app.get('/info/', (request, response) => {
 	//TODO: count persons array
-	const personsCount = persons.length
+	const countPersons = persons.length
 	const time = Date();
 	// console.log(personsCount)
 	response.send(`<p>Phonebook has info for ${personsCount} people</p><br>${time}`)
