@@ -60,6 +60,16 @@ app.get('/api/persons/:id', (request, response) => {
 		})
 	}
 })
+/* Implement functionality that allows the phone number information to be deleted by an HTTP DELETE request to the 
+URL that identifies the phone number information.*/
+app.delete('/api/persons/:id', (request, response) => {
+	// search id from params
+	const id = Number(request.params.id)
+	// filter right info from array
+	const person = persons.filter(person => person.id === id)
+
+	response.status(204).end()
+})
 })
 
 const PORT = 3001
