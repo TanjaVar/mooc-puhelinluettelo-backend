@@ -39,6 +39,27 @@ app.get('/info/', (request, response) => {
 	const time = Date();
 	// console.log(personsCount)
 	response.send(`<p>Phonebook has info for ${personsCount} people</p><br>${time}`)
+	response.send(`<p>Phonebook has info for ${countPersons} people</p><br>${time}`)
+})
+
+app.get('/api/persons/:id', (request, response) => {
+	//TODO: search id from params
+	const id = Number(request.params.id)
+	console.log(id)
+	// TODO: search right info with id
+	const person = persons.filter(person => person.id === id)
+	console.log(person)
+
+	if (person) {
+		response.json(person)
+		response.status(204).end()
+		console.log("person: true")
+	} else {
+		return response.status(400).json({
+			error: 'Invalid id, content missing'
+		})
+	}
+})
 })
 
 const PORT = 3001
