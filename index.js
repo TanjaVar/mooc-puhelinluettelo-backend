@@ -1,9 +1,12 @@
 const { response } = require('express')
 const express = require('express')
+const morgan = require('morgan')
 const app = express()
 
 // express json parser
 app.use(express.json())
+// middleware
+app.use(morgan('tiny'))
 
 // stores data for phonebook
 let persons = [
@@ -34,18 +37,18 @@ let persons = [
 	}
 ]
 
-app.get('/api/persons/', (request, response) => {
+app.get('/api/persons/', morgan('tiny'), (request, response) => {
 	response.json(persons)
 })
 
-app.get('/info/', (request, response) => {
+app.get('/info/', morgan('tiny'), (request, response) => {
 	const countPersons = persons.length
 	const time = Date();
 	// console.log(personsCount)
 	response.send(`<p>Phonebook has info for ${countPersons} people</p><br>${time}`)
 })
 
-app.get('/api/persons/:id', (request, response) => {
+app.get('/api/persons/:id', morgan('tiny'), (request, response) => {
 	//TODO: search id from params
 	const id = Number(request.params.id)
 	console.log(id)
@@ -66,7 +69,7 @@ app.get('/api/persons/:id', (request, response) => {
 
 /* Implement functionality that allows the phone number information to be deleted by an 
 HTTP DELETE request to the URL that identifies the phone number information.*/
-app.delete('/api/persons/:id', (request, response) => {
+app.delete('/api/persons/:id', morgan('tiny'), (request, response) => {
 	// search id from params
 	const id = Number(request.params.id)
 	// filter right info from array
@@ -84,7 +87,7 @@ const generateRandomId = () => {
 
 /* Extend the backend so that new call details can be added with an HTTP POST 
 request to http://localhost:3001/api/persons.*/
-app.post('/api/persons', (request, response) => {
+app.post('/api/persons', morgan('tiny'), (request, response) => {
 	const body = request.body
 	//console.log("body: ", body)
 	//console.log("body.name: ", body.name)
