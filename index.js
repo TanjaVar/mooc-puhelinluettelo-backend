@@ -78,6 +78,27 @@ const generateRandomId = () => {
 	const newId = Math.floor(Math.random() * (max - min) + min)
 	return newId
 }
+
+/* Extend the backend so that new call details can be added with an HTTP POST 
+request to http://localhost:3001/api/persons.*/
+app.post('/api/persons', (request, response) => {
+	const body = request.body
+
+	//throw  error if phonenumber or name is missing from body
+	if (!body.number || !body.name) {
+		return response.status(400).json({
+			error: 'name or id missing'
+		})
+	}
+
+	const person = {
+		id: generateRandomId(),
+		name: body.name,
+		number: body.number
+	}
+
+	persons = persons.concat(person)
+	response.json(person)
 })
 
 const PORT = 3001
