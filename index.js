@@ -1,6 +1,7 @@
 const express = require('express')
 const app = express()
 
+// stores data for phonebook
 let persons = [
 	{
 		"id": 1,
