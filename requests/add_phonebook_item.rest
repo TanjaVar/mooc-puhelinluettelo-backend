@@ -1,2 +1,8 @@
-POST http://localhosdt:3001/api/persons/
+POST http://localhost:3001/api/persons/
 Content-Type: Application/json
+
+{
+	"id": 10000,
+	"name" "Tiina Tirriainen",
+	"phonenumber": "056-345346" 
+}
