@@ -94,7 +94,7 @@ app.post('/api/persons', (request, response) => {
 	if (!body.number || !body.name) {
 	// console.log("found person is ", found)
 		return response.status(400).json({
-			error: 'name or id missing'
+			error: "Person is already in phonebook"
 		})
 	}
 
