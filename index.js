@@ -71,6 +71,13 @@ app.delete('/api/persons/:id', (request, response) => {
 
 	response.status(204).end()
 })
+
+const generateRandomId = () => {
+	const min = 1
+	const max = 100000
+	const newId = Math.floor(Math.random() * (max - min) + min)
+	return newId
+}
 })
 
 const PORT = 3001
