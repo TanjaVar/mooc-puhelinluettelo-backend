@@ -85,9 +85,13 @@ const generateRandomId = () => {
 request to http://localhost:3001/api/persons.*/
 app.post('/api/persons', (request, response) => {
 	const body = request.body
+	//console.log("body: ", body)
+	//console.log("body.name: ", body.name)
+	//console.log("body.number: ", body.number)
 
 	//throw  error if phonenumber or name is missing from body
 	if (!body.number || !body.name) {
+	// console.log("found person is ", found)
 		return response.status(400).json({
 			error: 'name or id missing'
 		})
