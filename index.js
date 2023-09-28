@@ -1,6 +1,9 @@
 const express = require('express')
 const app = express()
 
+// express json parser
+app.use(express.json())
+
 // stores data for phonebook
 let persons = [
 	{
