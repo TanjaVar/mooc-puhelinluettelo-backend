@@ -97,7 +97,9 @@ app.post('/api/persons', (request, response) => {
 		})
 	} 
 
+	const found = persons.find(person => person.name == body.name)
 	// console.log("found person is ", found)
+	if (found) {
 		return response.status(400).json({
 			error: "Person is already in phonebook"
 		})
