@@ -38,11 +38,9 @@ app.get('/api/persons/', (request, response) => {
 })
 
 app.get('/info/', (request, response) => {
-	//TODO: count persons array
 	const countPersons = persons.length
 	const time = Date();
 	// console.log(personsCount)
-	response.send(`<p>Phonebook has info for ${personsCount} people</p><br>${time}`)
 	response.send(`<p>Phonebook has info for ${countPersons} people</p><br>${time}`)
 })
 
@@ -64,8 +62,9 @@ app.get('/api/persons/:id', (request, response) => {
 		})
 	}
 })
-/* Implement functionality that allows the phone number information to be deleted by an HTTP DELETE request to the 
-URL that identifies the phone number information.*/
+
+/* Implement functionality that allows the phone number information to be deleted by an 
+HTTP DELETE request to the URL that identifies the phone number information.*/
 app.delete('/api/persons/:id', (request, response) => {
 	// search id from params
 	const id = Number(request.params.id)
